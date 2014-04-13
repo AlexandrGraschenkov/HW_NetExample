@@ -1,18 +1,18 @@
 //
-//  TestNetConnectionTests.m
-//  TestNetConnectionTests
+//  HW_NetExampleTests.m
+//  HW_NetExampleTests
 //
-//  Created by Alexander on 10.04.14.
+//  Created by Alexander on 12.04.14.
 //  Copyright (c) 2014 Alexander. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface TestNetConnectionTests : XCTestCase
+@interface HW_NetExampleTests : XCTestCase
 
 @end
 
-@implementation TestNetConnectionTests
+@implementation HW_NetExampleTests
 
 - (void)setUp
 {

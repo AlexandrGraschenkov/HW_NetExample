@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A857270318F6C7980007E03E"
-               BuildableName = "TestNetConnection.app"
-               BlueprintName = "TestNetConnection"
-               ReferencedContainer = "container:TestNetConnection.xcodeproj">
+               BlueprintIdentifier = "A857274518F92D2F0007E03E"
+               BuildableName = "HW_NetExample.app"
+               BlueprintName = "HW_NetExample"
+               ReferencedContainer = "container:HW_NetExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A857272418F6C7980007E03E"
-               BuildableName = "TestNetConnectionTests.xctest"
-               BlueprintName = "TestNetConnectionTests"
-               ReferencedContainer = "container:TestNetConnection.xcodeproj">
+               BlueprintIdentifier = "A857276618F92D2F0007E03E"
+               BuildableName = "HW_NetExampleTests.xctest"
+               BlueprintName = "HW_NetExampleTests"
+               ReferencedContainer = "container:HW_NetExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A857270318F6C7980007E03E"
-            BuildableName = "TestNetConnection.app"
-            BlueprintName = "TestNetConnection"
-            ReferencedContainer = "container:TestNetConnection.xcodeproj">
+            BlueprintIdentifier = "A857274518F92D2F0007E03E"
+            BuildableName = "HW_NetExample.app"
+            BlueprintName = "HW_NetExample"
+            ReferencedContainer = "container:HW_NetExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -61,10 +61,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A857270318F6C7980007E03E"
-            BuildableName = "TestNetConnection.app"
-            BlueprintName = "TestNetConnection"
-            ReferencedContainer = "container:TestNetConnection.xcodeproj">
+            BlueprintIdentifier = "A857274518F92D2F0007E03E"
+            BuildableName = "HW_NetExample.app"
+            BlueprintName = "HW_NetExample"
+            ReferencedContainer = "container:HW_NetExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -79,10 +79,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A857270318F6C7980007E03E"
-            BuildableName = "TestNetConnection.app"
-            BlueprintName = "TestNetConnection"
-            ReferencedContainer = "container:TestNetConnection.xcodeproj">
+            BlueprintIdentifier = "A857274518F92D2F0007E03E"
+            BuildableName = "HW_NetExample.app"
+            BlueprintName = "HW_NetExample"
+            ReferencedContainer = "container:HW_NetExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

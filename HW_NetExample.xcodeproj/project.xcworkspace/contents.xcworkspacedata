@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TestNetConnection.xcodeproj">
+      location = "self:HW_NetExample.xcodeproj">
    </FileRef>
 </Workspace>

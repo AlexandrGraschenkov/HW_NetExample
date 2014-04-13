@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>TestNetConnection.xcscheme</key>
+		<key>HW_NetExample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>A857270318F6C7980007E03E</key>
+		<key>A857274518F92D2F0007E03E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A857272418F6C7980007E03E</key>
+		<key>A857276618F92D2F0007E03E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
