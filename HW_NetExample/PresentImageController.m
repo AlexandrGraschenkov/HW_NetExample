@@ -47,9 +47,13 @@
             NSURL *imgURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://dl.dropboxusercontent.com/u/55523423/NetExample/%@/%d_%d.png", folderName, row, col]];
             
             [[MyNetManager sharedInstance] getAsyncImageWithURL:imgURL completion:^(UIImage *image) {
-                UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(col * width, row * height, width, height)];
-                view.image = image;
-                [self.scroll addSubview:view];
+                dispatch_async(dispatch_get_main_queue(), ^(){
+                    UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(col * width, row * height, width, height)];
+                    view.image = image;
+                    [self.scroll addSubview:view];
+                    [self.view setNeedsDisplay];
+                    [self.scroll setNeedsDisplay];
+                });
             }];
         }
     }
