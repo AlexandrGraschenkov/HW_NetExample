@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MyNetManager.h"
+#import "MyTableViewCell.h"
 #import "PresentImageController.h"
 
 @interface ViewController ()
@@ -25,7 +26,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // тут должно быть что-то
+    static NSString *identifier = @"ShowImage";
+    if ([segue.identifier isEqualToString:identifier]) {
+        PresentImageController *destination = [segue destinationViewController];
+        destination.imageInfo = (NSDictionary *)[presentData objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -38,8 +43,9 @@
 - (void)reloadData
 {
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    indicator.tintColor = [UIColor blackColor];
-    indicator.center = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
+    indicator.color = [UIColor blackColor];
+    
+    indicator.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
     indicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:indicator];
     [indicator startAnimating];
@@ -47,8 +53,10 @@
     
     [[MyNetManager sharedInstance] getAsyncImagesInfo:^(NSArray *imagesInfo) {
         [indicator removeFromSuperview];
-        
-        // обновление данных
+        presentData = [NSArray arrayWithArray:imagesInfo];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.tableView reloadData];
+        });
     }];
 }
 
@@ -56,7 +64,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return presentData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MyTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    NSDictionary *dictionary = presentData[indexPath.row];
+    [cell setText:[dictionary valueForKey:@"folder_name"]];
+    return cell;
 }
 
 @end

@@ -24,6 +24,7 @@
 		A857278018F92D440007E03E /* MyNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A857277F18F92D440007E03E /* MyNetManager.m */; };
 		A857278318F930CB0007E03E /* ImageSliceTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A857278218F930CB0007E03E /* ImageSliceTool.m */; };
 		A857279418F94A000007E03E /* PresentImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A857279318F94A000007E03E /* PresentImageController.m */; };
+		F5AF0CC218FFEE2B00A132C0 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF0CC118FFEE2B00A132C0 /* MyTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		A857278218F930CB0007E03E /* ImageSliceTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSliceTool.m; sourceTree = "<group>"; };
 		A857279218F94A000007E03E /* PresentImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentImageController.h; sourceTree = "<group>"; };
 		A857279318F94A000007E03E /* PresentImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentImageController.m; sourceTree = "<group>"; };
+		F5AF0CC018FFEE2B00A132C0 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
+		F5AF0CC118FFEE2B00A132C0 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 				A857279518F9B5CE0007E03E /* Help Classes */,
 				A857276118F92D2F0007E03E /* Images.xcassets */,
 				A857275018F92D2F0007E03E /* Supporting Files */,
+				F5AF0CC018FFEE2B00A132C0 /* MyTableViewCell.h */,
+				F5AF0CC118FFEE2B00A132C0 /* MyTableViewCell.m */,
 			);
 			path = HW_NetExample;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A857276018F92D2F0007E03E /* ViewController.m in Sources */,
+				F5AF0CC218FFEE2B00A132C0 /* MyTableViewCell.m in Sources */,
 				A857278018F92D440007E03E /* MyNetManager.m in Sources */,
 				A857275A18F92D2F0007E03E /* AppDelegate.m in Sources */,
 				A857279418F94A000007E03E /* PresentImageController.m in Sources */,
@@ -405,6 +411,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HW_NetExample/HW_NetExample-Prefix.pch";
 				INFOPLIST_FILE = "HW_NetExample/HW_NetExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -418,6 +425,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HW_NetExample/HW_NetExample-Prefix.pch";
 				INFOPLIST_FILE = "HW_NetExample/HW_NetExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -482,6 +490,7 @@
 				A857277A18F92D2F0007E03E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A857277B18F92D2F0007E03E /* Build configuration list for PBXNativeTarget "HW_NetExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +499,7 @@
 				A857277D18F92D2F0007E03E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

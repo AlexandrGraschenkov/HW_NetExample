@@ -12,8 +12,8 @@
 
 + (instancetype)sharedInstance;
 
-- (void)getAsyncImagesInfo:(void(^)(NSArray* imagesInfo))complection;
+- (void)getAsyncImagesInfo:(void(^)(NSArray* imagesInfo))completion;
 
-- (void)getAsyncImageWithURL:(NSURL*)url complection:(void(^)(UIImage* image))complection;
+- (void)getAsyncImageWithURL:(NSURL*)url completion:(void(^)(UIImage* image))completion;
 
 @end
