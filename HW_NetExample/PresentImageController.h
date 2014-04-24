@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PresentImageController : UIViewController
-
+@property (nonatomic, strong) NSString *folder;
 @property (nonatomic, strong) NSDictionary *imageInfo;
 
 @end

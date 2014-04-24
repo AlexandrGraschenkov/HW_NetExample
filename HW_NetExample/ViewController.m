@@ -14,18 +14,36 @@
 {
     NSArray* presentData;
 }
+@property NSDictionary *imagesInfo;
 @end
 
 @implementation ViewController
-
+@synthesize imagesInfo;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    presentData=[[NSArray alloc] initWithObjects:(NSString *) @"plane",(NSString *) @"mountain",(NSString *) @"sunset",(NSString *) @"forest", nil];
+    imagesInfo=@{
+                 presentData[0]:[self returnDictionaryWithWidth:41 Height: 46 ColCount:12 andRows:20],
+                 presentData[1]:[self returnDictionaryWithWidth:41 Height: 41 ColCount:15 andRows:20],
+                 presentData[2]:[self returnDictionaryWithWidth:197 Height: 263 ColCount:2 andRows:4],
+                 presentData[3]:[self returnDictionaryWithWidth:461 Height: 181 ColCount:3 andRows:2],
+                };
 }
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(NSDictionary *)returnDictionaryWithWidth:(int)w Height:(int)h ColCount:(int)c andRows:(int)r{
+    NSDictionary *info=@{
+                         @"width":@((int)w),
+                         @"height":@((int)h),
+                         @"col":@((int)c),
+                         @"row":@((int)r),
+                         };
+    return info;
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender
 {
-    // тут должно быть что-то
+    PresentImageController *imageViewController = segue.destinationViewController;
+    imageViewController.folder=sender.textLabel.text;
+    imageViewController.imageInfo=imagesInfo[imageViewController.folder];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -56,7 +74,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 4;
 }
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.textLabel.text=presentData[indexPath.row];
+    return cell;
+}
 @end
