@@ -29,7 +29,6 @@
     PresentImageController *presentImageController = segue.destinationViewController;
     int index = self.tableView.indexPathForSelectedRow.row;
     NSDictionary *currentDic = [NSDictionary new];
-    NSLog(@"array: %@",[MyNetManager sharedInstance].imageInfo);
     currentDic = [MyNetManager sharedInstance].imageInfo[index];
     presentImageController.imageInfo = currentDic;
 }
@@ -54,8 +53,12 @@
     [[MyNetManager sharedInstance] getAsyncImagesInfo:^(NSArray *imagesInfo) {
         [indicator removeFromSuperview];
         
-        // обновление данных        
-        presentData = [[NSArray alloc]initWithArray:imagesInfo];
+        // обновление данных
+        NSMutableArray *imageNames = [NSMutableArray new];
+        for(NSDictionary* dic in imagesInfo) {
+            [imageNames addObject:[dic valueForKey:@"folder_name"]];
+        }
+        presentData = imageNames;
 
     }];
 }

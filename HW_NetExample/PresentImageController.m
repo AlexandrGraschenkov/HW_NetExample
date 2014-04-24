@@ -34,8 +34,8 @@
     [super viewDidLoad];
     [_scroll setBounces:NO];
     folderName = [_imageInfo valueForKey: @"folder_name"];
-    col = [[_imageInfo valueForKey: @"columns_count"] intValue];
-    row = [[_imageInfo valueForKey:@"rows_count"]intValue];
+    row = [[_imageInfo valueForKey: @"columns_count"] intValue];
+    col = [[_imageInfo valueForKey:@"rows_count"]intValue];
     width = [[_imageInfo valueForKey:@"elem_width"]doubleValue];
     height = [[_imageInfo valueForKey:@"elem_height"]doubleValue];
     scrollWidth = width*col;
@@ -72,12 +72,9 @@
                         [_scroll addSubview: imgView];
                     }];
                 beginX += width;
-                NSLog(@"I work %d,%d",i,j);
             }
-            NSLog(@"beginX: %d", beginX);
             beginX = 0;
             beginY += height;
         }
-    NSLog(@"ggggggggggggggggg%f, %f", [_scroll contentSize].width,[_scroll contentSize].height);
 }
 @end
