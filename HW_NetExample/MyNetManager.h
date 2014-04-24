@@ -15,5 +15,6 @@
 - (void)getAsyncImagesInfo:(void(^)(NSArray* imagesInfo))complection;
 
 - (void)getAsyncImageWithURL:(NSURL*)url complection:(void(^)(UIImage* image))complection;
+- (void)getImageAsyncInScroll:(UIScrollView *)scroll byUrl:(NSURL *)imgURL InThread:(dispatch_queue_t)downloadThread IfNonStop:(BOOL)stop AtIndexI:(int)i AndJ:(int)j;
 
 @end
