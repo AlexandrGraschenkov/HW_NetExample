@@ -10,6 +10,8 @@
 
 @interface MyNetManager : NSObject
 
+@property (copy, nonatomic)NSArray* imageInfo;
+
 + (instancetype)sharedInstance;
 
 - (void)getAsyncImagesInfo:(void(^)(NSArray* imagesInfo))complection;

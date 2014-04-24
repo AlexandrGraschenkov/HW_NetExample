@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MyNetManager.h"
 #import "PresentImageController.h"
+#import "Cell.h"
 
 @interface ViewController ()
 {
@@ -25,7 +26,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // тут должно быть что-то
+    PresentImageController *presentImageController = segue.destinationViewController;
+    int index = self.tableView.indexPathForSelectedRow.row;
+    NSDictionary *currentDic = [NSDictionary new];
+    NSLog(@"array: %@",[MyNetManager sharedInstance].imageInfo);
+    currentDic = [MyNetManager sharedInstance].imageInfo[index];
+    presentImageController.imageInfo = currentDic;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,15 +54,24 @@
     [[MyNetManager sharedInstance] getAsyncImagesInfo:^(NSArray *imagesInfo) {
         [indicator removeFromSuperview];
         
-        // обновление данных
+        // обновление данных        
+        presentData = [[NSArray alloc]initWithArray:imagesInfo];
+
     }];
 }
 
 #pragma mark - Table
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return presentData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"Cell";
+    Cell *currentCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    [currentCell setTitle:[presentData objectAtIndex:indexPath.row]];
+    return currentCell;
 }
 
 @end
