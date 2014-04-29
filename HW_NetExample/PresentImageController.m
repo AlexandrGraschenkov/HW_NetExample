@@ -36,8 +36,28 @@
         [v removeFromSuperview];
     }
     
-//    NSURL *imgURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://dl.dropboxusercontent.com/u/55523423/NetExample/%@/%d_%d.png", folderName, col, row]];
+    CGSize sliceSize = CGSizeMake([[_imageInfo objectForKey:@"elem_width"] doubleValue], [[_imageInfo objectForKey:@"elem_height"] doubleValue]);
     
+    size_t rows = [[_imageInfo objectForKey:@"rows_count"] intValue];
+    size_t columns = [[_imageInfo objectForKey:@"columns_count"] intValue];
+    
+    [self.scroll setContentSize:CGSizeMake(sliceSize.width*rows, sliceSize.height*columns)];
+    
+    for (int i = 0; i < columns; i++) {
+        for (int j = 0; j < rows; j++) {
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(j*sliceSize.width, i*sliceSize.height, sliceSize.width, sliceSize.height)];
+            
+            NSURL *imgURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://dl.dropboxusercontent.com/u/55523423/NetExample/%@/%d_%d.png", [_imageInfo objectForKeyedSubscript:@"folder_name"], i, j]];
+            
+            [[MyNetManager sharedInstance] getAsyncImageWithURL:imgURL complection:^(UIImage *image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [imageView setImage:image];
+                });
+            }];
+            
+            [self.scroll addSubview:imageView];
+        }
+    }
 }
 
 @end
