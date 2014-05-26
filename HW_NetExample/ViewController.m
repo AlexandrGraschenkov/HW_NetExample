@@ -25,7 +25,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // тут должно быть что-то
+    PresentImageController *presentController = [segue destinationViewController];
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    [presentController setImageInfo:[presentData objectAtIndex:indexPath.row]];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -35,9 +38,10 @@
     [self reloadData];
 }
 
+
 - (void)reloadData
 {
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     indicator.tintColor = [UIColor blackColor];
     indicator.center = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
     indicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -46,17 +50,45 @@
     
     
     [[MyNetManager sharedInstance] getAsyncImagesInfo:^(NSArray *imagesInfo) {
-        [indicator removeFromSuperview];
-        
-        // обновление данных
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [indicator removeFromSuperview];
+            presentData = imagesInfo;
+            [self.tableView reloadData];
+        });
     }];
 }
 
-#pragma mark - Table
+
+
+//- (void)reloadData
+//{
+//    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//    indicator.tintColor = [UIColor blackColor];
+//    indicator.center = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
+//    indicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+//    [self.view addSubview:indicator];
+//    [indicator startAnimating];
+//    
+//    
+//    [[MyNetManager sharedInstance] getAsyncImagesInfo:^(NSArray *imagesInfo) {
+//        [indicator removeFromSuperview];
+//        
+//        // обновление данных
+//    }];
+//}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+
+    [cell.textLabel setText:[[presentData objectAtIndex:indexPath.row] objectForKey:@"folder_name"]];
+    return cell;
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return presentData.count;
 }
 
 @end
