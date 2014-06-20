@@ -405,7 +405,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HW_NetExample/HW_NetExample-Prefix.pch";
 				INFOPLIST_FILE = "HW_NetExample/HW_NetExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -418,7 +420,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HW_NetExample/HW_NetExample-Prefix.pch";
 				INFOPLIST_FILE = "HW_NetExample/HW_NetExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -482,6 +486,7 @@
 				A857277A18F92D2F0007E03E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A857277B18F92D2F0007E03E /* Build configuration list for PBXNativeTarget "HW_NetExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +495,7 @@
 				A857277D18F92D2F0007E03E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
