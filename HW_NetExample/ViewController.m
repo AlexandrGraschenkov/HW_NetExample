@@ -21,11 +21,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[MyNetManager sharedInstance] getAsyncImagesInfo:^(NSArray *imagesInfo) {
+        presentData = imagesInfo;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // тут должно быть что-то
+    PresentImageController *present = [segue destinationViewController];
+    present.imageInfo = [presentData objectAtIndex:[self.tableView indexPathForSelectedRow].row];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -37,26 +44,30 @@
 
 - (void)reloadData
 {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, 40, 40)];
+    [self.view addSubview:view];
+    
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.tintColor = [UIColor blackColor];
-    indicator.center = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
+    indicator.center = CGPointMake(view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
     indicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [self.view addSubview:indicator];
+    [view addSubview:indicator];
     [indicator startAnimating];
     
-    
-    [[MyNetManager sharedInstance] getAsyncImagesInfo:^(NSArray *imagesInfo) {
-        [indicator removeFromSuperview];
-        
-        // обновление данных
-    }];
 }
 
 #pragma mark - Table
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return presentData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.textLabel.text = [[presentData objectAtIndex:indexPath.row] objectForKey:@"folder_name"];
+    return cell;
 }
 
 @end
